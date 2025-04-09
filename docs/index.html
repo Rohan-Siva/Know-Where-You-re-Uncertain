@@ -372,7 +372,8 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@inproceedings{bhatt2025knowyoureuncertainplanning,
+    <div style="position: relative;">
+      <pre><code><span style="color: red;">@inproceedings</span>{<span style="color: purple;">bhatt2025knowyoureuncertainplanning</span>,
             title={Know Where You're Uncertain When Planning with Multimodal Foundation Models: A Formal Framework},
             author={Neel P. Bhatt and Yunhao Yang and Rohan Siva and Daniel Milan and Ufuk Topcu and Zhangyang Wang},
             year={2025},
@@ -380,8 +381,47 @@
             address={Santa Clara, CA, USA},
             publisher={mlsys.org},
       }</code></pre>
+      <button id="copyBibtex" class="button is-small" 
+              style="position: absolute; top: 10px; right: 10px; opacity: 0.7; background-color: rgba(255, 255, 255, 0.7);" 
+              onmouseover="this.style.opacity='1'"
+              onmouseout="this.style.opacity='0.7'"
+              onclick="copyBibtexToClipboard()">
+        <span class="icon">
+          <i class="fas fa-copy"></i>
+        </span>
+        <span>Copy</span>
+      </button>
+    </div>
   </div>
 </section>
+
+<!-- Add this script for the copy functionality -->
+<script>
+function copyBibtexToClipboard() {
+  const bibtexText = `@inproceedings{bhatt2025knowyoureuncertainplanning,
+            title={Know Where You're Uncertain When Planning with Multimodal Foundation Models: A Formal Framework},
+            author={Neel P. Bhatt and Yunhao Yang and Rohan Siva and Daniel Milan and Ufuk Topcu and Zhangyang Wang},
+            year={2025},
+            booktitle={Proceedings of the Seventh Annual Conference on Machine Learning and Systems},
+            address={Santa Clara, CA, USA},
+            publisher={mlsys.org},
+      }`;
+  
+  navigator.clipboard.writeText(bibtexText).then(function() {
+    const button = document.getElementById('copyBibtex');
+    const originalHTML = button.innerHTML;
+    const originalStyle = button.getAttribute('style');
+    
+    button.innerHTML = '<span class="icon"><i class="fas fa-check"></i></span><span>Copied!</span>';
+    button.style = "position: absolute; top: 10px; right: 10px; opacity: 1; background-color: #48c774;";
+    
+    setTimeout(function() {
+      button.innerHTML = originalHTML;
+      button.setAttribute('style', originalStyle);
+    }, 2000);
+  });
+}
+</script>
 
 
 
